@@ -6,11 +6,11 @@ from basketball_reference_scraper.pbp import get_pbp
 from basketball_reference_scraper.shot_charts import get_shot_chart
 
 def receive_input():
-    query = raw_input("What type of data do you want? ")
-    if query != 'teams' or query != 'players' or query != 'seasons' or query != 'box scores' or query != 'shot charts':
-        print('Try again')
-        return receive_input()
-    return query
+    query = input('What type of data do you want: ')
+    if query == 'teams' or query == 'players' or query == 'seasons' or query == 'box scores' or query == 'shot charts':
+        return query
+    print('Try again')
+    return receive_input()
 
 def parse_input(arg):
     switcher = {
@@ -23,5 +23,8 @@ def parse_input(arg):
     return switcher.get(arg, "invalid input")
 
 def main():
+    print("hello")
     type_request = receive_input()
-    print(type_request)
+
+if __name__ == '__main__':
+    main()
