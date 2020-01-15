@@ -12,9 +12,23 @@ dict_query = {
     'box scores'  : 3,
     'shot charts' : 4
     }
+
+dict_teams = {
+    'roster'       : 0,
+    'team stats'   : 1,
+    'opp stats'    : 2,
+    'roster stats' : 3,
+    'misc stats'   : 4
+    }
+
+dict_seasons = {
+    'schedule'  : 0,
+    'standings' : 1
+}
+
 def receive_input():
     query = input('What type of data do you want: ')
-    if query == 'teams' or query == 'players' or query == 'seasons' or query == 'box scores' or query == 'shot charts':
+    if query in dict_query:
         return query
     print('Try again')
     return receive_input()
@@ -23,6 +37,16 @@ def receive_input():
 def parse_input(arg):
     switcher = {
         0: teams(),
+        1: get_team_stats(),
+        2: get_opp_stats(),
+        3: get_roster_stats(),
+        4: get_team_misc()
+        }
+    return switcher.get(arg, "invalid input")
+
+def parse_teams(arg):
+    switcher = {
+        0: get_roster(),
         1: players(),
         2: seasons(),
         3: box_score(),
@@ -32,7 +56,7 @@ def parse_input(arg):
 
 def teams():
     teams_query = input('What type of team data do you want: ')
-    if teams_query == 'roster' or query == 'team stats' or query == 'opp stats' or query == 'roster stats' or query == 'team misc':
+    if teams_query in dict_teams:
         return teams_query
     print('Try again')
     return teams()
