@@ -12,19 +12,31 @@ def receive_input():
     print('Try again')
     return receive_input()
 
-def parse_input(arg):
-    switcher = {
-            0: teams(),
-            1: players(),
-            2: seasons(),
-            3: box_scores(),
-            4: shot_charts()
-        }
-    return switcher.get(arg, "invalid input")
+
+# def parse_input(arg):
+#    switcher = {
+#            0: teams(),
+#            1: players(),
+#            2: seasons(),
+#            3: box_scores(),
+#            4: shot_charts()
+#        }
+#    return switcher.get(arg, "invalid input")
 
 def main():
-    print("hello")
     type_request = receive_input()
+    if type_request == 'teams':
+        teams()
+        break
+    elif type_request == 'players':
+        players()
+        break
+    elif type_request == 'box scores':
+        box_scores()
+        break
+    elif type_request == 'shot charts':
+        shot_charts()
+        break
 
 if __name__ == '__main__':
     main()
